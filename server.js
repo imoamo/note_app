@@ -3,12 +3,9 @@ const cors = require('cors');
 const dbConnect = require('./config/db');
 const userRouter = require('./routes/userRouter');
 const noteRouter = require('./routes/noteRouter');
-require('dotenv').config();
-
 const app = express();
-app.use(cors());
 
-app.use(express.json());
+app.use(cors());
 app.use((req, res, next) => {
     res.header("Access-Control-Allow-Origin", " *");
     res.header(
@@ -22,6 +19,8 @@ app.use((req, res, next) => {
     next();
 });
 
+app.use(express.json());
+
 app.use("/user", userRouter);
 app.use("/note", noteRouter);
 
@@ -29,12 +28,12 @@ app.get("/", (req, res) => {
     res.status(200).send('welcome to home page');
 });
 
-app.listen(process.env.PORT, async () => {
+app.listen(8080, async () => {
     try {
         await dbConnect();
         console.log(`DB Connected Successfully`)
     } catch (error) {
         console.log(error);
     }
-    console.log(`Server was running on port ${process.env.PORT}`)
+    console.log(`Server was running on port 8080`)
 });

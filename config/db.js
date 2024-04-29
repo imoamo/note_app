@@ -1,8 +1,7 @@
 const mongoose = require('mongoose');
-require('dotenv').config();
 
 const dbConnect = () => {
-    mongoose.connect(process.env.Mongo_URL)
+    mongoose.connect('mongodb://localhost:27017/Full_Stack')
 }
 
 module.exports = dbConnect;
