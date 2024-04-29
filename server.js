@@ -5,7 +5,10 @@ const dbConnect = require('./config/db');
 const userRouter = require('./routes/userRouter');
 const noteRouter = require('./routes/noteRouter');
 
-app.use(cors());
+app.use(cors({
+    origin: "http://localhost:5173"
+}
+));
 
 app.use(express.json());
 
