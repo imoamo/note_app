@@ -9,12 +9,14 @@ app.use(cors());
 
 app.use(express.json());
 
-app.use("/user", userRouter);
-app.use("/note", noteRouter);
 
 app.get("/", (req, res) => {
     res.status(200).send('welcome to home page');
 });
+
+app.use("/user", userRouter);
+app.use("/note", noteRouter);
+
 
 app.listen(8080, async () => {
     try {
